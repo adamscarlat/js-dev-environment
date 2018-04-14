@@ -4,9 +4,12 @@
   "description": "JavaScript development environment Pluralsight course by Cory House",
   "scripts": {
 		"prestart": "babel-node buildScripts/startMessage.js",
-		"start": "npm-run-all --parallel security-check open:src",
+		"start": "npm-run-all --parallel security-check open:src lint:watch",
 		"open:src": "babel-node buildScripts/srcServer.js",
-		"security-check": "nsp check"
+		"security-check": "nsp check",
+		"lint": "esw webpack.config.* src buildScripts --color",
+		"lint:watch": "npm run lint -- --watch",
+		"test": "mocha --reporter progress buildScripts/testSetup.js \"src/**/*.test.js\""
 	},
   "author": "Cory House",
   "license": "MIT",
