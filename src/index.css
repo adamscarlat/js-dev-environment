@@ -2,6 +2,6 @@ body {
 	font-family: sans-serif;
 }
 
-table {
+table th{
 	padding: 5px;
 }

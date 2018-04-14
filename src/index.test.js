@@ -13,11 +13,11 @@ describe('First Test', () => {
 
 
 describe('index.html', () => {
-	it('should say Its working', (done) => {
+	it('should say Users', (done) => {
 		const index = fs.readFileSync('./src/index.html', 'utf-8');
 		jsdom.env(index, (err, window) => {
 			const h1 = window.document.getElementsByTagName('h1')[0];
-			expect(h1.innerHTML).to.equal("It's Working!");
+			expect(h1.innerHTML).to.equal("Users");
 			done(); //marks the end of the async test
 			window.close();
 		})
