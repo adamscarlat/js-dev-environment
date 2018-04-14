@@ -17,7 +17,7 @@ describe('index.html', () => {
 		const index = fs.readFileSync('./src/index.html', 'utf-8');
 		jsdom.env(index, (err, window) => {
 			const h1 = window.document.getElementsByTagName('h1')[0];
-			expect(h1.innerHTML).to.equal("It's (not) Working!");
+			expect(h1.innerHTML).to.equal("It's Working!");
 			done(); //marks the end of the async test
 			window.close();
 		})
