@@ -12,15 +12,17 @@
     "test": "mocha --reporter progress buildScripts/testSetup.js \"src/**/*.test.js\"",
     "generate-mock-data": "babel-node buildScripts/generateMockData",
     "prestart-mockapi": "npm run generate-mock-data",
-		"start-mockapi": "json-server --watch src/api/db.json --port 3001",
-		"clean-dist": "rimraf ./dist && mkdir dist",
+    "start-mockapi": "json-server --watch src/api/db.json --port 3001",
+    "clean-dist": "rimraf ./dist && mkdir dist",
     "prebuild": "npm-run-all clean-dist test",
     "build": "babel-node buildScripts/build.js",
-    "postbuild": "babel-node buildScripts/distServer.js"
+    "postbuild": "babel-node buildScripts/distServer.js",
+    "deploy": "surge ./dist"
   },
   "author": "Cory House",
   "license": "MIT",
   "dependencies": {
+    "surge": "^0.20.1",
     "whatwg-fetch": "1.0.0"
   },
   "devDependencies": {
