@@ -1,4 +1,5 @@
 import path from 'path';
+import HtmlWebpackPlugin from 'html-webpack-plugin';
 
 export default {
   debug: true, //enables debugging information
@@ -15,7 +16,12 @@ export default {
     publicPath: '/',
     filename: 'bundle.js'
   },
-	plugins: [], //hot-reloading, linting, etc...
+	plugins: [
+		new HtmlWebpackPlugin({
+			template: 'src/index.html',
+			inject: true
+		})
+	], //hot-reloading, linting, etc...
 
 	//file types we want webpack to handle.
   module: {
