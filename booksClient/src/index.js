@@ -1,33 +1,42 @@
 import './index.css'
+import './book-list/book-list.css'
 
-import {getBooks, deleteBook} from './api/bookApi';
+import { BookListController } from './book-list/book-list'
+import { AuthController } from './auth/auth'
 
-// Populate table of users via API call.
-getBooks().then(result => {
-  let booksBody = "";
-
-  result.forEach(book => {
-    booksBody+= `<tr>
-      <td><a href="#" data-id="${book._id}" class="deleteBook">Delete</a></td>
-      <td>${book._id}</td>
-      <td>${book.title}</td>
-      <td>${book.author}</td>
-      <td>${book.genre}</td>
-      </tr>`
-  });
-    global.document.getElementById('books').innerHTML = booksBody;
-
-    const deleteLinks = global.document.getElementsByClassName('deleteBook');
-
-    // Must use array.from to create a real array from a DOM collection
-    // getElementsByClassname only returns an "array like" object
-    Array.from(deleteLinks, link => {
-      link.onclick = function(event) {
-        const element = event.target;
-        event.preventDefault();
-        deleteBook(element.attributes["data-id"].value);
-        const row = element.parentNode.parentNode;
-        row.parentNode.removeChild(row);
-      };
-    });
+$(document).ready(function() {
+  var booksAppController = BooksAppController();
+  booksAppController.initModule();
 })
+
+export function BooksAppController() {
+  var isAuthenticated = true;
+  var bookListController =  BookListController();
+  var authController = AuthController()
+
+  var initBookListModule = function() {
+    $("#books-app").append(bookListController.getTemplate());
+    bookListController.populateBooks();
+  }
+
+  var initAuthModule = function() {
+    
+  }
+
+  var initModule = function() {
+    authController.isAuthenticated()
+      .then(function(isAuthenticated) {
+        if (isAuthenticated) {
+          initBookListModule();
+          return;
+        } 
+          //auth controller init - login/register page
+      })
+    
+  }
+
+  return {
+    initModule: initModule
+  }
+
+}

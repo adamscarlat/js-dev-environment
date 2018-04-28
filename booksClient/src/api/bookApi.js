@@ -1,3 +1,4 @@
+//fetch api polyfill
 import 'whatwg-fetch';
 import getBaseUrl from './baseUrl'
 
