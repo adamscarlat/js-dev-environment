@@ -1,6 +1,6 @@
 import {expect} from 'chai';
 import jsdom from 'jsdom';
-import fs from 'fs' //file system 
+import fs from 'fs' //file system
 
 //describes what the file is testing
 describe('First Test', () => {
@@ -13,11 +13,11 @@ describe('First Test', () => {
 
 
 describe('index.html', () => {
-	it('should say Users', (done) => {
+	it('should say Books', (done) => {
 		const index = fs.readFileSync('./src/index.html', 'utf-8');
 		jsdom.env(index, (err, window) => {
 			const h1 = window.document.getElementsByTagName('h1')[0];
-			expect(h1.innerHTML).to.equal("Users");
+			expect(h1.innerHTML).to.equal("Books");
 			done(); //marks the end of the async test
 			window.close();
 		})

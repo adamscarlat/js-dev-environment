@@ -14,20 +14,20 @@ export const schema = {
               "unique": true,
               "minimum": 1
             },
-            "firstName": {
+            "title": {
               "type": "string",
               "faker": "name.firstName"
             },
-            "lastName": {
+            "author": {
               "type": "string",
               "faker": "name.lastName"
             },
-            "email": {
+            "genre": {
               "type": "string",
               "faker": "internet.email"
             }
           },
-          "required": ["id", "firstName", "lastName", "email"]
+          "required": ["id", "title", "author", "genre"]
         }
       }
     },
