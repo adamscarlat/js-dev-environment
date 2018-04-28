@@ -22,6 +22,7 @@
   "author": "Cory House",
   "license": "MIT",
   "dependencies": {
+    "html-loader": "^0.5.5",
     "surge": "^0.20.1",
     "whatwg-fetch": "1.0.0"
   },

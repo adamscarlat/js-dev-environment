@@ -60,7 +60,8 @@ export default {
   module: {
     loaders: [
       {test: /\.js$/, exclude: /node_modules/, loaders: ['babel']},
-      {test: /\.css$/, loader: ExtractTextPlugin.extract('css?sourceMap')}
+      {test: /\.css$/, loader: ExtractTextPlugin.extract('css?sourceMap')},
+      {test: /\.html$/, loader: "html-loader"}
     ]
   }
 }

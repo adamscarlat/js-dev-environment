@@ -1,27 +1,11 @@
-
 import {getBooks, deleteBook} from '../api/bookApi';
+import bookListTemplate from './book-list.html'
 
 export function BookListController() {
 
   //book-list template
   var getTemplate = function() {
-    var template = `
-    <div>
-    <h1>Books</h1>
-    <table class="books-table">
-        <thead>
-            <th>&nbsp;</th>
-            <th>Title</th>
-            <th>Author</th>
-            <th>Genre</th>
-        </thead>
-        <tbody id="books">
-
-        </tbody>
-          </table>
-      </div>
-    `
-    return template
+    return bookListTemplate
   }
 
   // Populate table of books via API call.
