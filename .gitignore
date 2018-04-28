@@ -60,3 +60,6 @@ typings/
 #mongo db data
 data/*
 
+#client files
+dist/
+

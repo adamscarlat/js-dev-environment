@@ -1,5 +1,6 @@
 import {getBooks, deleteBook} from '../api/bookApi';
 import bookListTemplate from './book-list.html'
+import './book-list.css'
 
 export function BookListController() {
 
@@ -39,9 +40,15 @@ export function BookListController() {
     })
   }
 
+  var initModule = function(parentDiv) {
+    parentDiv.append(getTemplate());
+    populateBooks();
+  }
+
   return {
     populateBooks: populateBooks,
-    getTemplate: getTemplate
+    getTemplate: getTemplate,
+    initModule: initModule
   }
 }
 
