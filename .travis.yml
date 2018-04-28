@@ -1,3 +1,7 @@
 language: node_js
 node_js:
   - "6"
+env:
+  - TEST_DIR=booksClient
+  - TEST_DIR=booksAPI
+script: cd $TEST_DIR && npm install && npm test
