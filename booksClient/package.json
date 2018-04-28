@@ -4,7 +4,11 @@
   "description": "JavaScript development environment Pluralsight course by Cory House",
   "scripts": {
     "prestart": "babel-node buildScripts/startMessage.js",
+<<<<<<< HEAD:booksClient/package.json
     "start": "npm-run-all --parallel open:src start-mockapi",
+=======
+    "start": "npm-run-all --parallel security-check open:src start-mockapi",
+>>>>>>> 19806d17f5b7b5e318cdf7fd09c5109a81002fe1:package.json
     "open:src": "babel-node buildScripts/srcServer.js",
     "security-check": "nsp check",
     "lint": "esw webpack.config.* src buildScripts --color",
