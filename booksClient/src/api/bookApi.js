@@ -1,3 +1,7 @@
+/*
+API of all books related verbs.
+*/
+
 //fetch api polyfill
 import 'whatwg-fetch';
 import getBaseUrl from './baseUrl'

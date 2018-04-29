@@ -44,7 +44,7 @@ var authController = function(User) {
     var loginUser = function(req, res) {
         User.findOne({ email: req.body.email }, function (err, user) {
             if (err) return res.status(500).send('Error on the server.');
-            if (!user) return res.status(404).send('No user found.');
+            if (!user) return res.status(401).send({ auth: false, message: "Bad login" });
 
             //compare input password to hashed value
             var passwordIsValid = bcrypt.compareSync(req.body.password, user.password);

@@ -2,14 +2,21 @@ import {getBooks, deleteBook} from '../api/bookApi';
 import bookListTemplate from './book-list.html'
 import './book-list.css'
 
+/*
+Logic related to the book-list screen
+*/
 export function BookListController() {
 
-  //book-list template
+  /*
+  Returns the html of the book-list screen. 
+  */
   var getTemplate = function() {
     return bookListTemplate
   }
 
-  // Populate table of books via API call.
+  /*
+  Populate table of books via API call to the bookAPI.
+  */
   var populateBooks = function() {
     getBooks().then(result => {
       let booksBody = "";
@@ -23,11 +30,9 @@ export function BookListController() {
           </tr>`
       });
         global.document.getElementById('books').innerHTML = booksBody;
-    
+
+        //register the callback to the delete link of each book.
         const deleteLinks = global.document.getElementsByClassName('deleteBook');
-    
-        // Must use array.from to create a real array from a DOM collection
-        // getElementsByClassname only returns an "array like" object
         Array.from(deleteLinks, link => {
           link.onclick = function(event) {
             const element = event.target;
@@ -40,11 +45,15 @@ export function BookListController() {
     })
   }
 
+  /*
+  Init module. Set the parentDiv and populate the list of books.
+  */
   var initModule = function(parentDiv) {
     parentDiv.append(getTemplate());
     populateBooks();
   }
 
+  //contoller API.
   return {
     populateBooks: populateBooks,
     getTemplate: getTemplate,
