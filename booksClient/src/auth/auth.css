@@ -3,18 +3,6 @@
 a:hover { text-decoration: none }
 
 
-.search-box{margin:80px auto;position:absolute;}
-.caption{margin-bottom:50px;}
-.loginForm input[type=text], .loginForm input[type=password]{
-	margin-bottom:10px;
-}
-.loginForm input[type=submit]{
-	background:#fb044a;
-	color:#fff;
-	font-weight:700;
-	
-}
-
-.login-container {
-    margin-left: unset;
+.submit-btn {
+	background: rgb(250, 250, 250)
 }

@@ -1,6 +1,7 @@
 import {getBooks, deleteBook} from '../api/bookApi';
 import bookListTemplate from './book-list.html'
 import './book-list.css'
+import { AuthController } from '../auth/auth'
 
 /*
 Logic related to the book-list screen
@@ -46,11 +47,22 @@ export function BookListController() {
   }
 
   /*
+  Register any callbacks of elements on the booklist screen
+  */
+  var registerCallbacks = function() {
+    $("#logout").click(function() {
+      event.preventDefault();
+      AuthController().logout();
+    })
+  }
+
+  /*
   Init module. Set the parentDiv and populate the list of books.
   */
   var initModule = function(parentDiv) {
     parentDiv.append(getTemplate());
     populateBooks();
+    registerCallbacks();
   }
 
   //contoller API.

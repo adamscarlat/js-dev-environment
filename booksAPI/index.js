@@ -4,8 +4,8 @@ var bodyParser = require('body-parser');
 
 //db connection
 var mongoose = require('mongoose');
-var db = mongoose.connect('mongodb://superuser1024:a1b2c3d4@ds259109.mlab.com:59109/demo-api-db')
-//var db = mongoose.connect('mongodb://localhost/bookAPI')
+//var db = mongoose.connect('mongodb://superuser1024:a1b2c3d4@ds259109.mlab.com:59109/demo-api-db')
+var db = mongoose.connect('mongodb://localhost/bookAPI')
 
 const app = express();
 app.use(cors());

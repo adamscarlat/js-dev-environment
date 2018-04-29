@@ -19,8 +19,15 @@ export function login(username, password) {
     return postLogin('auth/login', username, password)
 }
 
-export function register() {
-    return postRegister('auth/register')
+/*
+Clear user session 
+*/
+export function logout() {
+    sessionStorage.clear();
+}
+
+export function register(name, email, password) {
+    return postRegister('auth/register', name, email, password)
 }
 
 /*
@@ -38,27 +45,16 @@ sessionStorage.
 Returns a Promise<boolean> object.
 */
 function postLogin(url, email, password) {
-    //creates a post request of type form-urlencoded
-    const searchParams = new URLSearchParams();
-    searchParams.set('email', email);
-    searchParams.set('password', password);
 
-    const request = new Request(baseUrl + url, {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/x-www-form-urlencoded'
-        },
-        body: searchParams
-    });
+    var request = createFormEncodedRequest({
+        'email': email,
+        'password': password
+    }, url)
+
     return fetch(request)
         .then(function(response) { return response.json()})
-        .then(function(loginData) {
-            if (loginData.auth && loginData.token !== undefined) {
-                sessionStorage.setItem('token', loginData.token);
-                return true;
-            }
-            console.log('login failed');
-            return false;
+        .then(function(responseData) {
+            return validateToken(responseData);
         })
         .catch(function(err) {
             console.log(err);
@@ -66,8 +62,27 @@ function postLogin(url, email, password) {
         })
 }
 
-function postRegister(url) {
+/*
+Registers a new user and if successful, stores the result token in 
+sessionStorage.
+Returns a Promise<boolean> object.
+*/
+function postRegister(url, name, email, password) {
+    var request = createFormEncodedRequest({
+        'name': name,
+        'email': email,
+        'password': password
+    }, url)
 
+    return fetch(request)
+    .then(function(response) { return response.json()})
+    .then(function(responseData) {
+        return validateToken(responseData);
+    })
+    .catch(function(err) {
+        console.log(err);
+        return false;
+    })
 }
 
 /*
@@ -97,5 +112,32 @@ function getConnectionStatus(url) {
         })
 }
 
+/*
+Creates a post request of type form-urlencoded
+*/
+function createFormEncodedRequest(params, url) {
+    var searchParams = new URLSearchParams();
+    for (let key in params) {
+        console.log(key)
+        searchParams.set(key, params[key])
+    }
 
+    const request = new Request(baseUrl + url, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/x-www-form-urlencoded'
+        },
+        body: searchParams
+    });
+
+    return request;
+}
+
+function validateToken(responseData) {
+    if (responseData.auth && responseData.token !== undefined) {
+        sessionStorage.setItem('token', responseData.token);
+        return true;
+    }
+    return false;
+}
 
