@@ -1,4 +1,5 @@
-# js-dev-environment
-JavaScript Development Environment from the Pluralsight course:
+# Books Client App
 
-https://app.pluralsight.com/library/courses/javascript-development-environment/table-of-contents
+The books client app is a single page application written in plain JS. Since this app is fairly simple, I chose not to introduce a client side framework such as Angular. 
+
+The client app communicates with the books api (found in the booksAPI directory) via a restful API. 
