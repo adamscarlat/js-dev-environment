@@ -1,7 +1,7 @@
 import {getBooks, deleteBook} from '../api/bookApi';
 import bookListTemplate from './book-list.html'
 import './book-list.css'
-import { AuthController } from '../auth/auth'
+import { Router } from '../router/router'
 
 /*
 Logic related to the book-list screen
@@ -52,7 +52,7 @@ export function BookListController() {
   var registerCallbacks = function() {
     $("#logout").click(function() {
       event.preventDefault();
-      AuthController().logout();
+      Router().navigateTo('logout');
     })
   }
 

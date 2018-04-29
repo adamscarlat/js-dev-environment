@@ -118,7 +118,6 @@ Creates a post request of type form-urlencoded
 function createFormEncodedRequest(params, url) {
     var searchParams = new URLSearchParams();
     for (let key in params) {
-        console.log(key)
         searchParams.set(key, params[key])
     }
 

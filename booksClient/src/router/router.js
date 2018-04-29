@@ -32,9 +32,10 @@ export function Router() {
     Bind the routing event handlders that operate upon URL change
     */
     var bindRoutingEvents = function() {
-        $(window).bind('hashchange', function() {
+        $(window).one('hashchange', function() {
             if (window.location.hash === '#auth') initAuthModule('books');
             if (window.location.hash === '#books') initBookListModule();
+            if (window.location.hash === '#logout') AuthController().logout();
         })
     }
 

@@ -30,7 +30,6 @@ function del(url) {
 }
 
 function onSuccess(response) {
-	console.log(response)
   return response.json();
 }
 
