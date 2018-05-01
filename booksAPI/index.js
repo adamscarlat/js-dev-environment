@@ -1,6 +1,7 @@
 var express =  require('express');
 var cors = require('cors');
 var bodyParser = require('body-parser');
+var verifyTokenMiddleware = require('./middleware/authMiddleware')().verifyToken
 
 //db connection
 var mongoose = require('mongoose');
@@ -21,7 +22,7 @@ var User = require('./models/userModel');
 
 //book router
 var bookRouter = require('./routes/booksRoutes')(Book);
-app.use('/api/books', bookRouter);
+app.use('/api/books', verifyTokenMiddleware, bookRouter);
 
 //auth router
 var authRouter = require('./routes/authRouter')(User);

@@ -1,5 +1,4 @@
 var express = require('express');
-var verifyTokenMiddleware = require('../middleware/authMiddleware')().verifyToken
 
 // route- /api/books
 var routes = function(Book) {

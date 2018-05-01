@@ -3,6 +3,9 @@ var config = require('../config');
 
 var authMiddleware = function () {
 
+    /* 
+    Verify a jwt token. This middleware runs before any route that needs authentication
+    */
     var verifyToken = function(req, res, next) {
         var token = req.headers['x-access-token'];
 
