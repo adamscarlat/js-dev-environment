@@ -21,15 +21,6 @@ export function BooksAppController() {
   //Else, navigate to the auth screen.
   var initModule = function() {
     router.initModule(parentDiv);
-
-    authController.isAuthenticated()
-      .then(function(isAuthenticated) {
-        if (!isAuthenticated) {
-          router.navigateTo('auth')
-          return;
-        }
-        router.navigateTo('books')
-      })
   }
 
   //Controller API
