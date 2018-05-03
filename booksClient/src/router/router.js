@@ -18,7 +18,8 @@ export function Router() {
     var initBookListModule = function() {
         bookListController =  BookListController();
         routerOutlet.empty();
-        bookListController.initModule(routerOutlet);
+				bookListController.initModule(routerOutlet);
+				console.log('init books module...')
     }
 
     /*
@@ -30,30 +31,22 @@ export function Router() {
         authController.initModule(routerOutlet, continueTo);
     }
 
-    /*
+		/*
     Bind the routing event handlders that operate upon URL change
     */
-    var bindRoutingEvents = function() {
-        $(window).on('hashchange', function() {
-						//prevent multiple firings of this event
-						if (window.location.hash === oldHash) return;
-
-						newHash = window.location.hash;
-
-            if (newHash === '#auth') initAuthModule('books');
-            if (newHash === '#books') initBookListModule();
-            if (newHash === '#logout') AuthController().logout();
-
-						oldHash = newHash;
-        })
-    }
+	 var bindRoutingEvents = function() {
+		$(window).on('hashchange', function() {
+				if (window.location.hash === '#auth') initAuthModule('books');
+				if (window.location.hash === '#books') initBookListModule();
+				if (window.location.hash === '#logout') AuthController().logout();
+		})
+}
 
     /*
     Change the hash symbol to navigate to a new page. This will trigger an
     event handler (see bindRoutingEvents).
     */
     var navigateTo = function(location) {
-        window.location.hash = '';
 				window.location.hash = '#' + location;
     }
 
