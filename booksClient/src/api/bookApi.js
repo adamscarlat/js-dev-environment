@@ -9,11 +9,11 @@ import getBaseUrl from './baseUrl'
 const baseUrl = getBaseUrl();
 
 export function getBooks() {
-  return get('books');
+  return get('api/books');
 }
 
 export function deleteBook(id) {
-  return del(`books/${id}`);
+  return del(`api/books/${id}`);
 }
 
 function get(url) {
@@ -26,7 +26,7 @@ function del(url) {
     method: 'DELETE'
   });
 
-  return fetch(request).then(onSuccess, onError);
+  return fetch(request) //.then(onSuccess, onError);
 }
 
 function onSuccess(response) {

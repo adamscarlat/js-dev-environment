@@ -1,7 +1,7 @@
 /*
 API of all authentication related operations. This includes:
 1. Login
-2. Registration 
+2. Registration
 3. Checking connection status
 */
 
@@ -16,31 +16,31 @@ Given username and password, send a post request for login.
 Returns a Promise<boolean> object.
 */
 export function login(username, password) {
-    return postLogin('auth/login', username, password)
+    return postLogin('api/auth/login', username, password)
 }
 
 /*
-Clear user session 
+Clear user session
 */
 export function logout() {
     sessionStorage.clear();
 }
 
 export function register(name, email, password) {
-    return postRegister('auth/register', name, email, password)
+    return postRegister('api/auth/register', name, email, password)
 }
 
 /*
 Checks the connection status using the token that's currently
-in sessionStorage. 
+in sessionStorage.
 Returns a Promise<boolean> object.
 */
 export function checkConnectionStatus() {
-    return getConnectionStatus('auth/me');
+    return getConnectionStatus('api/auth/me');
 }
 
 /*
-Logs in and if successful, stores the result token in 
+Logs in and if successful, stores the result token in
 sessionStorage.
 Returns a Promise<boolean> object.
 */
@@ -63,7 +63,7 @@ function postLogin(url, email, password) {
 }
 
 /*
-Registers a new user and if successful, stores the result token in 
+Registers a new user and if successful, stores the result token in
 sessionStorage.
 Returns a Promise<boolean> object.
 */
@@ -101,11 +101,11 @@ function getConnectionStatus(url) {
         .then(function(connectionStatus) {
             if (connectionStatus.status == 200 || connectionStatus.auth === 'true') {
                 return true;
-            } 
+            }
 
             console.log('not connected');
             return false;
-            
+
         })
         .catch(function(err) {
             console.log(err)

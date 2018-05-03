@@ -2,7 +2,7 @@
 Get the base url to work with. Change this according to dev/production work.
 */
 export default function getBaseUrl() {
-  return getQueryStringParameterByName('useMockApi') ? 'http://localhost:3001/' : 'http://localhost:8000/api/';
+  return getQueryStringParameterByName('useMockApi') ? 'http://localhost:3001/' : 'http://localhost:8000/';
 }
 
 /*

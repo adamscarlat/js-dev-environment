@@ -27,6 +27,7 @@ export function AuthRouteGuard() {
     router.navigateTo('auth')
   }
 
+  //Route guard API
   return {
     canContinue: canContinue,
     fallback: fallback
