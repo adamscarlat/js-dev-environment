@@ -2,7 +2,9 @@ var jwt = require('jsonwebtoken');
 var bcrypt = require('bcryptjs');
 var config = require('../config');
 
-//defines the callbacks the auth router uses
+/*
+defines the callbacks the auth router uses
+*/
 var authController = function(User) {
     
     //register a new user if email is unique
@@ -19,7 +21,9 @@ var authController = function(User) {
         })
     }
 
-    //get the connection status given a token 
+    /*
+    get the connection status given a token 
+    */
     var getConnectionStatus = function(req, res) {
         //return user object (without password) to caller
         User.findById(req.userId, function (err, user) {
