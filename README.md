@@ -7,4 +7,5 @@ On the backend, I used NodeJS and MongoDB. On the frontend I used plain JS. Both
 scripts. For more information about each project, see the individual readme files in each folder.
 
 For any questions about the project, feel free to message me.
+
 Changes
